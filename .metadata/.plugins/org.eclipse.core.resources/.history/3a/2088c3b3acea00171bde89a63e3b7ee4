@@ -1,0 +1,44 @@
+package me.jacestratton;
+
+import org.bukkit.entity.Entity;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.util.Vector;
+
+public class WorldBorder implements Listener {
+
+    public WorldBorder(JacesPlugin plugin) {
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+    }
+
+    @EventHandler
+    public void playerOrVehicle(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+        if (player.getVehicle() == null) {
+            repel(player);
+        }
+        else {
+            repel(player.getVehicle());
+        }
+    }
+
+    private void repel(Entity entity) {
+        if (Math.abs(entity.getLocation().getX()) > 5000 || Math.abs(entity.getLocation().getZ()) > 5000) {
+            if (entity.getLocation().getX() > 5000) {
+                entity.setVelocity(entity.getVelocity().add(new Vector(-0.3, .01, 0)));
+            }
+            if (entity.getLocation().getX() < -5000) {
+                entity.setVelocity(entity.getVelocity().add(new Vector(0.3, 0.01, 0)));
+            }
+            if (entity.getLocation().getZ() > 5000) {
+                entity.setVelocity(entity.getVelocity().add(new Vector(0, 0.01, -0.3)));
+            }
+            if (entity.getLocation().getZ() < -5000) {
+                entity.setVelocity(entity.getVelocity().add(new Vector(0, 0.01, 0.3)));
+            }
+        }
+    }
+
+}

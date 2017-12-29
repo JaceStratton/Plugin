@@ -1,0 +1,7 @@
+name: JacesPlugin
+main: me.jacestratton.JacesPlugin
+version: 1.0
+commands:
+    random:
+        description: Returns a random message.
+        usage: /<command>

@@ -1,0 +1,102 @@
+package me.jacestratton;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+
+/**
+ * The main class to initialize the plugin and run commands.
+ * 
+ * @author JaceStratton
+ * 
+ * @version 1.0
+ */
+public class JacesPlugin extends JavaPlugin {
+    private GuideBook tips;
+
+    /**
+     * Initializes fields and logs the plugin initialization.
+     */
+    @Override
+    public void onEnable() {
+        getLogger().info("JacesPlugin is online!");
+        tips = new GuideBook(this);
+    }
+
+    /**
+     * Closes any open processes and stops the plugin.
+     */
+    @Override
+    public void onDisable() {
+
+    }
+
+    /**
+     * Catches commands.
+     * 
+     * @param sender
+     *            The player who sent the command.
+     * @param cmd
+     *            The command that was entered by the player.
+     * @param label
+     *            ???
+     * @param args
+     *            The arguments included for the command.
+     */
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            if (cmd.getName().equalsIgnoreCase("tip")) {
+                if (args.length == 0) {
+                    player.sendMessage(tips.randomTip());
+                    return true;
+                }
+                if (args.length == 1) {
+                    Exception exception = null;
+                    int parse = 0;
+                    try {
+                        parse = Integer.parseInt(args[0]);
+                    }
+                    catch (Exception e) {
+                        exception = e;
+                    }
+                    if (exception == null) {
+                        player.sendMessage(tips.searchTip(parse));
+                    }
+                    else {
+                        player.sendMessage(tips.searchTip(args[0]));
+                    }
+                    return true;
+                }
+                player.sendMessage("Too many arguments!");
+                return false;
+            }
+            if (cmd.getName().equalsIgnoreCase("addtip")) {
+                if (args.length != 0) {
+                    StringBuilder string = new StringBuilder(args[0]);
+                    for (int i = 1; i < args.length; i++) {
+                        string.append(" " + args[i]);
+                    }
+                    tips.addTip(string.toString());
+                    player.sendMessage("Your tip has been added to the guidebook.");
+                    return true;
+                }
+                player.sendMessage("You can't add an empty tip.");
+                return false;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Prints any error from GuideBook methods to the logger.
+     * 
+     * @param e
+     *            The error to print.
+     */
+    public void printError(Exception e) {
+        getLogger().info(e.getMessage());
+    }
+
+}

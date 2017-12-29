@@ -1,0 +1,13 @@
+name: JacesPlugin
+main: me.jacestratton.JacesPlugin
+version: 1.0
+commands:
+    tip:
+        description: Totally unhelpful tips.
+        usage: /<command>
+    tips:
+        description: See how many tips there are.
+        usage: /<command>
+    addtip:
+    	description: Add a tip to the list.
+    	usage: /<command> [tip]

@@ -1,0 +1,64 @@
+package me.jacestratton;
+
+import java.io.FileNotFoundException; 
+import java.io.IOException;
+
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+
+public class JacesPlugin extends JavaPlugin {
+    private GuideBook tips;
+
+    @Override
+    public void onEnable() {
+        getLogger().info("JacesPlugin is online!");
+        try {
+            tips = new GuideBook();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
+
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        if (sender instanceof Player) {
+            Player player = (Player) sender;
+            if (cmd.getName().equalsIgnoreCase("tip") && args.length == 0) {
+                player.sendMessage(tips.printTip());
+                return true;
+            }
+            if (cmd.getName().equalsIgnoreCase("addtip")) {
+                if (args.length != 0) {
+                    StringBuilder string = new StringBuilder(args[0]);
+                    for (int i = 1; i < args.length; i++) {
+                        string.append(" " + args[i]);
+                    }
+                    try {
+                        tips.addTip(string.toString());
+                        player.sendMessage("Your tip has been added to the guidebook.");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                        player.sendMessage("There was a problem adding the tip )=");
+                        return false;
+                    }
+                    try {
+                        tips = new GuideBook();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    return true;
+                }
+                player.sendMessage("You can't add an empty tip.");
+                return false;
+            }
+        }
+        return false;
+    }
+
+}

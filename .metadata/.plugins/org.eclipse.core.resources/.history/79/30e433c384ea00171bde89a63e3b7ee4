@@ -1,0 +1,11 @@
+package me.jacestratton;
+
+import org.bukkit.event.player.PlayerEvent;
+
+public class WorldBorder {
+    
+    public WorldBorder(JacesPlugin plugin, PlayerEvent event) {
+        
+    }
+    
+}

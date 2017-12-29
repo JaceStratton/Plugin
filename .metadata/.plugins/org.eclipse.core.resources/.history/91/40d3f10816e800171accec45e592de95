@@ -1,0 +1,13 @@
+name: JacesPlugin
+main: me.jacestratton.JacesPlugin
+version: 1.0
+commands:
+    tip:
+        description: Gives you a tip from the guidebook.
+        usage: /<command>
+    tips:
+        description: See how many tips are in the guidebook.
+        usage: /<command>
+    addtip:
+        description: Add a tip to the guidebook.
+        usage: /<command> [tip]

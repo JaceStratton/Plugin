@@ -1,0 +1,12 @@
+package me.jacestratton;
+
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerEvent;
+
+public class WorldBorder implements Listener {
+    
+    public WorldBorder(JacesPlugin plugin) {
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+    }
+    
+}

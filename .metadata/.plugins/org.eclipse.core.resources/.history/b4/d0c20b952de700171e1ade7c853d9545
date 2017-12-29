@@ -1,0 +1,7 @@
+name: Jace'sPlugin
+main: me.jacestratton.PluginInit
+version: 1.0
+	commands:
+		boop:
+			Description: bop
+			usage: /<command>

@@ -1,0 +1,33 @@
+package me.jacestratton;
+
+import org.bukkit.Location;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.util.Vector;
+
+public class WorldBorder implements Listener {
+    private Vector negX;
+    private Vector negY;
+    private Vector posX;
+    private Vector posY;
+
+    public WorldBorder(JacesPlugin plugin) {
+        negX = new Vector(-0.01, 0.005, 0);
+        negY = new Vector(0, 0.005, -0.01);
+        posX = new Vector(0.01, 0.005, 0);
+        posY = new Vector(0, 0.005, 0.01);
+        plugin.getServer().getPluginManager().registerEvents(this, plugin);
+    }
+
+    @EventHandler
+    public void repel(PlayerMoveEvent event) {
+        Player player = event.getPlayer();
+        Vector vector = player.getVelocity();
+        while (Math.abs(player.getLocation().getX()) > 5000 || Math.abs(player.getLocation().getY()) > 5000) {
+
+        }
+    }
+
+}

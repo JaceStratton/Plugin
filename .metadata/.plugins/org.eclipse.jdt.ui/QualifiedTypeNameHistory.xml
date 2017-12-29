@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.io.FileWriter"/>
+<fullyQualifiedTypeName name="java.io.PrintWriter"/>
+<fullyQualifiedTypeName name="org.bukkit.ChatColor"/>
+<fullyQualifiedTypeName name="net.md_5.bungee.api.ChatColor"/>
+<fullyQualifiedTypeName name="org.bukkit.event.player.PlayerEvent"/>
+<fullyQualifiedTypeName name="org.bukkit.event.Listener"/>
+<fullyQualifiedTypeName name="org.bukkit.entity.Player"/>
+<fullyQualifiedTypeName name="org.bukkit.Location"/>
+<fullyQualifiedTypeName name="org.bukkit.util.Vector"/>
+<fullyQualifiedTypeName name="org.bukkit.event.EventHandler"/>
+<fullyQualifiedTypeName name="org.bukkit.event.player.PlayerEggThrowEvent"/>
+<fullyQualifiedTypeName name="org.bukkit.event.player.PlayerMoveEvent"/>
+<fullyQualifiedTypeName name="org.bukkit.event.Event"/>
+<fullyQualifiedTypeName name="org.bukkit.entity.Entity"/>
+<fullyQualifiedTypeName name="org.bukkit.event.vehicle.VehicleMoveEvent"/>
+<fullyQualifiedTypeName name="org.bukkit.event.block.BlockPlaceEvent"/>
+</qualifiedTypeNameHistroy>
